@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
-    <title>Document</title>
+    <title>Proyecto02JSGrupo11</title>
 </head>
 <body>
+    <div class="fondo">
+        <section class="contenedor">
+            <h1>Calculadora de propinas</h1>
+            <div class="datos">
+                <!-- ingresar el nombre del producto -->
+                <select id="nombre"> 
+                    <option value="azucar">azucar</option>
+                    <option value="pan">pan</option>
+                </select>
+                <input type="text" id="precio" placeholder="precio">
+                <select id="marca">
+                    <option value="Dia">Dia</option>
+                    <option value="Vea">Vea</option>
+                </select>
+            </div>
+            <div class="botones">
+                <button id="cargar_dato" type="submit">Cargar</button>
+                <button id="mostrar_lista" type="submit">Mostrar lista</button>
+            </div>
+        </section>
+        <section class="cont-listas">
+            <div class="lista">
+                <h1>Listado de productos</h1>
+            </div>
+            <div class="lista">
+                <h1>Listado con menor precio</h1>
+            </div>
+        </section>
+
+    </div>
     
 
     <script src="../src/index.js"></script>

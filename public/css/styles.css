@@ -8,79 +8,81 @@ html{
 
 body{
     height: 100%;
-    background: linear-gradient(to top right, #e0e0e0, #b6b6b6, #b4b4b4);
+    background-color: #f5feff;
     display: grid;
     align-items: center;
 }
 
 .fondo{
     display: grid;
-    /* background-color: #ececec;
-    background: transparent; */
-    background: none;
-    box-shadow: 5px 5px 0px #2e2a2a; 
+    grid-template-rows: 25% 75%;
+    background-image: radial-gradient(circle, #deffef, #e0ffff, #ecfeff, #f9feff, #ffffff);
     border: 1px solid black;
     border-radius: 30px;
-    padding: 20px 40px;
-    justify-content: center;
-    max-width: 90%;
-    align-items: center;
+    padding-bottom: 20px;
     margin: auto;
+    height: 90%;
+    width: 70%;
 }
 
 .contenedor{
     display: grid;
+    align-self: center;
     text-align: center;
-    justify-content: center;
-    gap: 10px;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+   
 }
 
-button{
-    position: relative;
-    padding: 15px 35px;
-    font-size: 15px;
-    font-weight: bold;
-    color: #474747;
-    background-color: transparent;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.5s;
+.contenedor h1{
+    background-color: #fff;
+    border-bottom: 1px solid black;
+    padding-top: 15px;
+    text-align: center;
+    height: 45px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
 }
-button::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 5px;
-    left: 5px;
-    background-color: #e6e6e6;
+
+.datos{
+    padding-top: 10px;
+    height: 90px;
+}
+
+.botones{
+    margin: 10px;
+}
+
+
+button{
+    background-color: white;
+    border: 1px solid #000000;
     border-radius: 8px;
-    z-index: -1;
-    transition: all 0.5s;
-  }
-  
-  button:hover::after {
-    top: 0;
-    left: 0;
-  }
-  
+    box-sizing: border-box;
+    color: #222222;
+    cursor: pointer;
+    outline: none;
+    padding: 13px 23px;
+    transition: all 0.2s;  
+}
+
+button:active {
+    transform: scale(.96);
+}
+
 
 .cont-listas{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 20px;
 }
 
 .lista{
-    background-color: #141414;
-    border-radius: 10px;
-    padding: 10px 50px;
-    box-shadow: 5px 5px 5px #868686;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    padding: 20px 50px;
     margin: 0 10px;
-}
-
-
-.lista h1 {
-    color: #ffffff;
 }

@@ -122,6 +122,7 @@ document.getElementById("cargar_dato").onclick = ()=> {
         <p> ${aux18} - ${aux19} - ${aux20} </p>
         `;
 
+        
     }
 
     // document.getElementById("mostrar_lista").onclick = function(){

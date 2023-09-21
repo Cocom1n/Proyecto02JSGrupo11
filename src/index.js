@@ -33,25 +33,50 @@ document.getElementById("cargar_dato").onclick = ()=> {
     console.log(g_totalProductos);
 
 
+    //Muestra la lista completa de objetos cargados por el usuario en la pagina
     document.getElementById("mostrar_lista").onclick = () =>{
 
         let listaProductos = document.getElementById("lista_completa");
 
-        g_totalProductos.forEach(function(producto, index) {
-            listaProductos.innerHTML += `${(index + 1)}-  Nombre: ${producto.nombre}  $ ${producto.precio} Marca: ${producto.marca} <br>` ;
+        g_totalProductos.forEach(function(producto) {
+            listaProductos.innerHTML += `${producto.nombre} - $${producto.precio} - ${producto.marca} <br>` ;
         });
-
     }
 
-    // document.getElementById("mostrar_lista").onclick = function(){
-    //     let listaProductos = document.getElementById("listaProductos");
+    //filtra los productos mas baratos segun el nombre y muestra los mas baratos
+    document.getElementById("mostrar_barato").onclick = () => {
+        // Arreglo donde se guardaran todos los precios minimos cargados
+        const listBarato = [];
+    
+        // Iterar sobre los productos y actualizar los precios mínimos
+        g_totalProductos.forEach((producto) => {
 
-    //     if(g_totalProductos.length==0){
-    //         listaProductos.innerHTML = `La lista esta vacia`;
-    //     }else{
-    //         g_totalProductos.forEach(function(elemento){
-    //             listaProductos.innerHTML = `Nomnbre: ${g_totalProductos.nombre}  precio: $ ${g_totalProductos.precio}  Marca: ${g_totalProductos.marca}`;
-    //         });
-    //     }
-    // }
+            // Buscar si ya existe un precio mínimo para este producto
+            const menorPrecioExistente = listBarato.find((minPrecio) => minPrecio.nombre === producto.nombre);
+    
+            // Si no existe un precio mínimo para este producto o el precio actual es menor, actualizarlo o agregarlo
+            if (!menorPrecioExistente || producto.precio < menorPrecioExistente.precio) {
+                if (menorPrecioExistente) {
+                    // Actualizar el precio mínimo existente
+                    menorPrecioExistente.precio = producto.precio;
+                } else {
+                    // Agregar un nuevo precio mínimo
+                    listBarato.push({
+                        nombre: producto.nombre,
+                        precio: producto.precio,
+                        marca: producto.marca
+                    });
+                }
+            }
+        });
+    
+        // Mostrar la lista de productos de precio mínimo
+        let listaProductos = document.getElementById("lista_menor_precio");
+        
+    
+        listBarato.forEach(function(producto) {
+            listaProductos.innerHTML += `${producto.nombre} - $${producto.precio} - ${producto.marca} <br>`;
+        });
+    };
+
 }

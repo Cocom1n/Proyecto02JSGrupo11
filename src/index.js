@@ -37,16 +37,7 @@ document.getElementById("cargar_dato").onclick = ()=> {
     //cuando se presione el boton mostrar lista
 
     document.getElementById("mostrar_lista").onclick = ()=>{
-        //-------Muestra todos los productos
-        g_totalProductos.forEach((elemento)=>{
-
-            //Esta parte la hace otro
-
-            //console.log(elemento);
-            //document.getElementById("listaTotal").innerHTML = ` <p> ${elemento.nombre} - ${elemento.precio} - ${elemento.marca} </p>`;
-
-        });
-
+ 
         //-------Muestra solo los productos que son más baratos, solo uno por nombre.
         let aux, aux1 = 100000, aux2; //estas son para azucar, los 100000 son para calcular el menor precio, debe haber un precio definido para sacar el menor.
         let aux3, aux4 = 100000, aux5; // para pan
@@ -91,7 +82,7 @@ document.getElementById("cargar_dato").onclick = ()=> {
             }
         })
         //console.log(` ${aux} - ${aux1} - ${aux2}`);
-        document.getElementById("menorPrecio").innerHTML = 
+        document.getElementById("lista_menor_precio").innerHTML = 
         `<p> ${aux} - ${aux1} - ${aux2} </p>
          <p> ${aux3} - ${aux4} - ${aux5} </p>
          <p> ${aux6} - ${aux7} - ${aux8} </p>

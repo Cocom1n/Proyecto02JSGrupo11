@@ -23,6 +23,13 @@ document.getElementById("cargar_dato").onclick = ()=> {
 
     // Comprobacion de errores. Esta parte la hace otro xd
 
+    // No deja ingresar numeros muy grandes y negativos
+    if (producto.precio < 0 || producto.precio > 1000000)
+    {
+        alert("No ingrese numeros negativos o muy grandes como precio.");
+        return; 
+    }
+
     // Muestra lo que se va a cargar
     console.log(producto);
   
@@ -36,12 +43,77 @@ document.getElementById("cargar_dato").onclick = ()=> {
     document.getElementById("mostrar_lista").onclick = () =>{
 
         let listaProductos = document.getElementById("lista_completa");
+        
+        // Borra el contenido previo en la lista
+        listaProductos.innerHTML = "";
 
         g_totalProductos.forEach(function(producto, index) {
             listaProductos.innerHTML += `${(index + 1)}-  Nombre: ${producto.nombre}  $ ${producto.precio} Marca: ${producto.marca} <br>` ;
         });
-        
-        //-------Muestra solo los productos que son más baratos, solo uno por nombre.
+
+        // Creamos un vector donde cada componente almacena otro arreglo con los productos elegidos.
+        // Si la lista no tiene x producto, entonces el vector correspondiente estará vacio.
+        let arrayMasBaratos = [
+            {nombre: "", precio: -1, marca: ""},        // Azucar
+            {nombre: "", precio: -1, marca: ""},        // Pan
+            {nombre: "", precio: -1, marca: ""},        // Sal
+            {nombre: "", precio: -1, marca: ""},        // Dulce
+            {nombre: "", precio: -1, marca: ""},        // Leche
+            {nombre: "", precio: -1, marca: ""},        // Queso
+            {nombre: "", precio: -1, marca: ""},        // Yogurt
+        ];
+
+        g_totalProductos.forEach((elemento, index)=> {
+            switch (elemento.nombre) {
+                case "azucar":
+                if (arrayMasBaratos[0].precio == -1 || arrayMasBaratos[0].precio > elemento.precio)    
+                    arrayMasBaratos[0] = elemento;
+                    break;
+                case "pan":
+                    if (arrayMasBaratos[1].precio == -1 || arrayMasBaratos[1].precio > elemento.precio)    
+                    arrayMasBaratos[1] = elemento;
+                    break;
+                case "sal":
+                    if (arrayMasBaratos[2].precio == -1 || arrayMasBaratos[2].precio > elemento.precio)    
+                    arrayMasBaratos[2] = elemento;
+                    break;
+                case "dulce":
+                    if (arrayMasBaratos[3].precio == -1 || arrayMasBaratos[3].precio > elemento.precio)    
+                    arrayMasBaratos[3] = elemento;
+                    break;
+                case "leche":
+                    if (arrayMasBaratos[4].precio == -1 || arrayMasBaratos[4].precio > elemento.precio)    
+                    arrayMasBaratos[4] = elemento;
+                    break;
+                case "queso":
+                    if (arrayMasBaratos[5].precio == -1 || arrayMasBaratos[5].precio > elemento.precio)    
+                    arrayMasBaratos[5] = elemento;
+                    break;
+                case "yogurt":
+                    if (arrayMasBaratos[6].precio == -1 || arrayMasBaratos[6].precio > elemento.precio)    
+                    arrayMasBaratos[6] = elemento;
+                    break;
+            }
+        }
+        );
+
+        // Borra lista mas baratos
+        document.getElementById("lista_menor_precio").innerHTML = "";
+
+        // Muestra los mas baratos
+        arrayMasBaratos.forEach(
+            (elemento)=>{
+                // No muestra si elcampo esta "vacio"
+                if (elemento.precio != -1)
+                {
+                    // RECUERDEN EL \n
+                    document.getElementById("lista_menor_precio").innerHTML += 
+                    `<p> ${elemento.nombre} - ${elemento.precio} - ${elemento.marca} </p>\n`
+                }
+            }
+        )
+
+        /* //-------Muestra solo los productos que son más baratos, solo uno por nombre.
         let aux="", aux1 = 100000, aux2=""; //estas son para azucar, los 100000 son para calcular el menor precio, debe haber un precio definido para sacar el menor.
         let aux3="", aux4 = 100000, aux5=""; // para pan
         let aux6="", aux7 = 100000, aux8=""; // para sal
@@ -120,7 +192,7 @@ document.getElementById("cargar_dato").onclick = ()=> {
         <p> ${aux12} - ${aux13} - ${aux14} </p>
         <p> ${aux15} - ${aux16} - ${aux17} </p>
         <p> ${aux18} - ${aux19} - ${aux20} </p>
-        `;
+        `; */
 
         
     }
